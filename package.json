@@ -1,0 +1,23 @@
+{
+  "name": "mcserverjarsapi",
+  "version": "1.0.0",
+  "description": "Other JavaScript API for serverjars.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobtread/ServerJars-API-JS.git"
+  },
+  "keywords": [
+    "ServerJars",
+    "API"
+  ],
+  "author": "T1mm1Turner <danielperez2000@outlook.com>",
+  "license": "none",
+  "homepage": "https://github.com/T1mm1Turner/MCServerJarsAPI#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
