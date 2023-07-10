@@ -24,7 +24,7 @@ ServerJars.fetchAll({type: "bedrock", category: "pocketmine"})
     .catch(e => console.log(e))
 ```
 
-**Downloading Jars:**
+**Downloading Jars (this with top-level await, use an async function instead on older versions of node):**
 ```javascript
 const ServerJars = require('mcserverjarsapi')
 
