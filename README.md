@@ -4,7 +4,7 @@
 
 Another Node JavaScript API for ServerJars.com
 
-**Examples:**
+**Examples(<ins>By defautlt al functions call the vanilla type and category.</ins>):**
 
 **Fetching Jar types and subtypes (called "category"):**
 ```javascript
@@ -26,7 +26,12 @@ ServerJars.fetchAll({type: "bedrock", category: "pocketmine"})
 
 **Downloading Jars:**
 ```javascript
-const ServerJars = require('mcserverjarsapi');
+const ServerJars = require('mcserverjarsapi')
 
-// On development
+const fsStream = await ServerJars.downloadJar()
+fsStream.on("open", stream => {
+    console.log("Downloading...")
+}).on("close", stream => {
+    console.log("Done")
+})
 ```

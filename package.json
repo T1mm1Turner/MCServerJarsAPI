@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacobtread/ServerJars-API-JS.git"
+    "url": "https://github.com/T1mm1Turner/MCServerJarsAPI.git"
   },
   "keywords": [
     "ServerJars",
     "API"
   ],
   "author": "T1mm1Turner <danielperez2000@outlook.com>",
-  "license": "none",
-  "homepage": "https://github.com/T1mm1Turner/MCServerJarsAPI#readme",
+  "license": "ISC",
+  "homepage": "https://github.com/T1mm1Turner/MCServerJarsAPI",
   "dependencies": {
     "request": "^2.88.2"
   }

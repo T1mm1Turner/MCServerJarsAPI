@@ -1,5 +1,6 @@
-const request = require('request');
-const fs = require('fs');
+const request = require('request')
+const fs = require('fs')
+const { join, normalize, extname } = require("path")
 
 function sendRequest(urlParts) {
     return new Promise((resolve, reject) => {
@@ -49,15 +50,12 @@ function fetchDetails({ type = "vanilla", category = "vanilla", version = "" } =
     return sendRequest(`fetchDetails/${type}/${category}/${version}`)
 }
 
-// function fetchDetails(type, category, version) {
-//     return sendRequest(`fetchDetails/${type}/${category}${version ? "/" + version : ""}`)
-// }
-
-function downloadJar(type, category, version, output) {
+async function downloadJar({ type = "vanilla", category = "vanilla", version = "", downloadPath = process.cwd(), name } = {}) {
+    const jarName = name ? name + extname(await fetchDetails({ type: type, category: category, version: version }).then(jar => jar.file)) : ((version || category !== "vanilla") ? await fetchDetails({ type: type, category: category, version: version }).then(jar => jar.file) : await fetchLatest().then(jar => jar.file))
     return new Promise((resolve) => {
-        let file = fs.createWriteStream(output);
-        resolve(request.get(`https://serverjars.com/api/fetchJar/${type}/${category}${version ? "/" + version : ""}`).pipe(file));
-    });
+        let file = fs.createWriteStream(join(normalize(downloadPath), jarName))
+        resolve(request.get(`https://serverjars.com/api/fetchJar/${type}/${category}/${version}`).pipe(file))
+    })
 }
 
-module.exports = { fetchLatest, downloadJar, fetchAll, fetchTypes, fetchSubTypes, fetchDetails };
+module.exports = { fetchLatest, downloadJar, fetchAll, fetchTypes, fetchSubTypes, fetchDetails }
